@@ -1,0 +1,45 @@
+﻿@model ShoppingCart
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<form method="post">
+    <br />
+    <input hidden asp-for="ProductId" />
+    <section class="py-5 shadow border-5">
+        <div class="col-6 col-md-2 offset-lg-1 pb-1">
+            <a asp-action="Index" class="btn btn-outline-primary bg-gradient mb-5 fw-semibold btn-sm text-uppercase">
+                <small>Back to home</small>
+            </a>
+        </div>
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="@Model.Product.ProductImages" alt="..." /></div>
+                    <div class="col-md-6">
+                        <div class="small mb-1">ISBN:@Model.Product.ISBN</div>
+                        <h1 class="display-5 fw-bolder">@Model.Product.Title</h1>
+                        <div class="fs-5 mb-5">
+                            <h4>By: @Model.Product.Author</h4>
+                            <hr />
+                            <h6>Category: @Model.Product.Category.Name</h6>
+                        </div>
+                        <div class="fs-5 mb-5">
+                        <span>@Model.Product.Price.ToString("c")</span>
+                        <hr />
+                        </div>
+                    <p class="lead">@Html.Raw(Model.Product.Description)</p>
+                        <div class="d-flex">
+                        <input asp-for="Count" type="numb" value="1" class="form-control text-center me-3"
+                               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" 
+                        style="max-width: 3rem" />
+                        <button type="submit" class="btn btn-outline-dark flex-shrink-0">
+                                <i class="bi-cart-fill me-1"></i>
+                                Add to cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+</form>
