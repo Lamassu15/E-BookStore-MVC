@@ -1,10 +1,14 @@
 ﻿@model List<Category>
 
+@{
+    ViewData["Title"] = "Category List";
+}
+
 <div class="card shadow border-0 mt-4">
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-white py-2">Category List</h2>
+                <h2 class="text-white py-2"><em>Category List</em></h2>
             </div>
         </div>
     </div>
@@ -19,7 +23,7 @@
             </div>
         </div>
 
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th>
@@ -28,7 +32,9 @@
                     <th>
                         Display Order
                     </th>
-                    <th></th>
+                    <th>
+                        Action
+                    </th>
                 </tr>
             </thead>
             <tbody>
