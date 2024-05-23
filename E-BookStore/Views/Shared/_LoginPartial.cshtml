@@ -9,10 +9,14 @@
         <a  class="nav-link " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @if(User.IsInRole(SD.Role_Admin)) 
             { 
                 <text>Admin</text> 
-            } 
+            }
+            else if (User.IsInRole(SD.Role_Employee))
+            { 
+                <text>Employee</text> 
+            }
             else
             { 
-                <text>@User.Identity?.Name!</text> 
+                <text>@User.Identity?.Name</text> 
             }!
             </a>
     </li>

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Web.Data.Access.Repository.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Web.Ultility;
 
 namespace E_BookStore.Areas.Customer.Controllers
 {
@@ -52,27 +53,31 @@ namespace E_BookStore.Areas.Customer.Controllers
             {
                 cartFromDb.Count += shoppingCart.Count;
                 _unitOfWork.ShoppingCart.Update(cartFromDb);
+                _unitOfWork.Save();
             }
             else
             {
                 _unitOfWork.ShoppingCart.Add(shoppingCart);
+                _unitOfWork.Save();
+                HttpContext.Session.SetInt32(SD.SessionCart, 
+                _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId).Count());
             }
             TempData["success"] = "Item added to cart successfully";
 
-            _unitOfWork.Save();
 
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult Search(string searchTerm)
+        {
+            IEnumerable<Product> searchResults = _unitOfWork.Product.GetAll(p => p.Title.Contains(searchTerm), includeProperties: "Category");
+            return View(searchResults);
         }
     }
 }

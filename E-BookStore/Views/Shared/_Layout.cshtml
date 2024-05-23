@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -15,7 +18,7 @@
     @*Boostrap Icons*@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
-<body>
+<body> 
     <header>
         <nav class="navbar navbar-expand-sm bg-primary navbar-toggleable-sm border-bottom" data-bs-theme="dark">
             <div class="container-fluid">
@@ -30,9 +33,9 @@
                             <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">Manage orders</a>
                         </li>
-                        @if(User.IsInRole(SD.Role_Admin))
+                        @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
                         {
                             <li class="nav-item">
                                 <div class="dropdown text-light">
@@ -42,17 +45,18 @@
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a></li>
                                         <li><a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Products</a></li>
-                                        <hr />
                                         <li><a class="dropdown-item" asp-area="Admin" asp-controller="Order" asp-action="Index">Orders</a></li>
+                                        <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create Users</a></li>
                                     </ul>
                                 </div>
                             </li>
                         }
                         <li class="nav-item">
                             <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">
-                                <i class="fa-solid fa-cart-shopping"></i>  
+                                @await Component.InvokeAsync("ShoppingCart")
                             </a>
                         </li>
+
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -66,9 +70,41 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Lamassu Books - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-muted bg-primary" data-bs-theme="dark">
+        <div class="d-flex justify-content-around text-center">
+            <p>&copy; 2024 - Lamassu Books</p>
+            <!-- Section: Social media -->
+            <div class="mb-1">
+                <!-- Facebook -->
+                <a data-mdb-ripple-init class="btn btn-outline btn-floating " href="#!">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <!-- Twitter -->
+                <a data-mdb-ripple-init class="btn btn-outline btn-floating" href="#!">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+                <!-- Google -->
+                <a data-mdb-ripple-init class="btn btn-outline btn-floating " href="#!">
+                    <i class="fab fa-google"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a data-mdb-ripple-init class="btn btn-outline btn-floating " href="#!">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <!-- Linkedin -->
+                <a data-mdb-ripple-init class="btn btn-outline btn-floating " href="#!">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <!-- Github -->
+                <a data-mdb-ripple-init class="btn btn-outline btn-floating " href="#!">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
         </div>
     </footer>
     @*Fontawesome*@

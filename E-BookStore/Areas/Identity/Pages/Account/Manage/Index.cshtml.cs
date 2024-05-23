@@ -70,6 +70,12 @@ namespace E_BookStore.Areas.Identity.Pages.Account.Manage
         private async Task LoadAsync(IdentityUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
+            //user.Name = Input.Name;
+            //user.StreetAddress = Input.StreetAddress;
+            //user.City = Input.City;
+            //user.State = Input.State;
+            //user.PostalCode = Input.PostalCode;
+            //user.PhoneNumber = Input.PhoneNumber;
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
             Username = userName;

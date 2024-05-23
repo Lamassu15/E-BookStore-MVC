@@ -115,7 +115,7 @@ namespace E_BookStore.Areas.Customer.Controllers
                 _unitOfWork.OrderDetail.Add(orderDetails);
                 _unitOfWork.Save();
             }
-            
+
             //payment
             if (ShoppingCartVM.OrderHeader.PaymentStatus == SD.PaymentStatusPending)
             {
@@ -158,7 +158,7 @@ namespace E_BookStore.Areas.Customer.Controllers
             }
 
             return RedirectToAction(nameof(OrderConfirmation), new { id = ShoppingCartVM.OrderHeader.Id });
-        
+
         }
 
         public IActionResult OrderConfirmation(int id)
@@ -177,7 +177,7 @@ namespace E_BookStore.Areas.Customer.Controllers
                     _unitOfWork.OrderHeader.UpdateStatus(id, SD.StatusApproved, SD.PaymentStatusApproved);
                     _unitOfWork.Save();
                 }
-                //HttpContext.Session.Clear();
+                HttpContext.Session.Clear();
 
             }
 
@@ -204,9 +204,11 @@ namespace E_BookStore.Areas.Customer.Controllers
 
         public IActionResult Minus(int cartId)
         {
-            var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId);
+            var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId, tracked: true);
             if (cartFromDb.Count <= 1)
             {
+                HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart.GetAll
+                   (u => u.ApplicationUserId == cartFromDb.ApplicationUserId).Count() - 1);
                 _unitOfWork.ShoppingCart.Remove(cartFromDb);
             }
             else
@@ -220,8 +222,10 @@ namespace E_BookStore.Areas.Customer.Controllers
 
         public IActionResult Remove(int cartId)
         {
-            var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId);
-            _unitOfWork.ShoppingCart.Remove(cartFromDb);
+            var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId, tracked:true);
+            HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart.GetAll
+                (u => u.ApplicationUserId == cartFromDb.ApplicationUserId).Count() - 1);
+            _unitOfWork.ShoppingCart.Remove(cartFromDb); ;
             _unitOfWork.Save();
             return RedirectToAction(nameof(Index));
         }
