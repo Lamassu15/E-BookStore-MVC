@@ -51,6 +51,8 @@ namespace E_BookStore.Areas.Admin.Controllers
 
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
+
         public IActionResult Upsert(ProductVM productVM, List<IFormFile> files)
         {
             if (ModelState.IsValid)

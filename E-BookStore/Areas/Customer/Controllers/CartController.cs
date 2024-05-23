@@ -34,10 +34,13 @@ namespace E_BookStore.Areas.Customer.Controllers
                 OrderHeader = new()
             };
 
-            foreach (var list in ShoppingCartVM.ShoppingCartList)
+            IEnumerable<ProductImage> productImages = _unitOfWork.ProductImage.GetAll();
+
+            foreach (var cart in ShoppingCartVM.ShoppingCartList)
             {
-                list.Price = GetPriceBasedOnQuantity(list);
-                ShoppingCartVM.OrderHeader.OrderTotal += list.Price;
+                cart.Product.ProductImages = productImages.Where(u => u.ProductId == cart.Product.Id).ToList();
+                cart.Price = GetPriceBasedOnQuantity(cart);
+                ShoppingCartVM.OrderHeader.OrderTotal += (cart.Price * cart.Count);
             }
 
             return View(ShoppingCartVM);

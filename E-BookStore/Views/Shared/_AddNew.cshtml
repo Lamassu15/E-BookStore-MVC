@@ -1,0 +1,6 @@
+﻿@if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
+{
+    <a class="btn btn-outline-warning z-3" style="position: fixed; bottom: 25px; right: 0;" asp-area="Admin" asp-action="Upsert" asp-controller="Product">
+        <i class="fa-solid fa-plus fa-beat-fade"></i> Add New Product
+    </a>
+}
