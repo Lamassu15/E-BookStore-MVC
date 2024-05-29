@@ -12,8 +12,8 @@ using Web.Data.Access;
 namespace Web.Data.Access.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240523074808_initMigrations")]
-    partial class initMigrations
+    [Migration("20240529161059_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -482,6 +482,56 @@ namespace Web.Data.Access.Migrations
                             ISBN = "978-0-670-81302-8",
                             Price = 9.9900000000000002,
                             Title = "It"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Author = "Stephen King",
+                            CategoryId = 5,
+                            Description = "The Green Mile is a 1996 serial novel by American writer Stephen King. It tells the story of death row supervisor Paul Edgecombe's encounter with John Coffey, an unusual inmate who displays inexplicable healing and empathetic abilities.",
+                            ISBN = "978-0-671-79378-1",
+                            Price = 9.9900000000000002,
+                            Title = "The Green Mile"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Author = "Jane Austen",
+                            CategoryId = 2,
+                            Description = "A romantic novel that charts the emotional development of the protagonist, Elizabeth Bennet, who learns the error of making hasty judgments and comes to appreciate the difference between the superficial and the essential.",
+                            ISBN = "978-0-19-953556-9",
+                            Price = 7.9900000000000002,
+                            Title = "Pride and Prejudice"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Author = "Test Author",
+                            CategoryId = 2,
+                            Description = "Test2",
+                            ISBN = "978-0-671-79378-1",
+                            Price = 15.99,
+                            Title = "Test2"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Author = "Herman Melville",
+                            CategoryId = 2,
+                            Description = "An epic tale of the voyage of the whaling ship Pequod, commanded by Captain Ahab who is obsessed with revenge against Moby Dick, the giant white sperm whale that on a previous voyage destroyed Ahab's ship and severed his leg.",
+                            ISBN = "978-0-14-243724-7",
+                            Price = 11.99,
+                            Title = "Moby-Dick"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Author = "Harper Lee",
+                            CategoryId = 2,
+                            Description = "A novel set in the American South during the 1930s, focusing on the Finch family and the moral growth of the children as their father, Atticus, defends a black man falsely accused of raping a white woman.",
+                            ISBN = "978-0-06-112008-4",
+                            Price = 10.99,
+                            Title = "To Kill a Mockingbird"
                         });
                 });
 

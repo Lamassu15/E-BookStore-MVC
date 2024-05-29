@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Web.Data.Access.Migrations
 {
     /// <inheritdoc />
-    public partial class initMigrations : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -335,7 +335,12 @@ namespace Web.Data.Access.Migrations
                     { 2, "J.R.R. Tolkien", 2, "The Lord....", "978-0-395-19395-7", 19.989999999999998, "The lord of the rings" },
                     { 3, "J.R.R. Tolkien", 2, "The Hobbit, or There and Back Again is a children's fantasy novel by English author J. R. R. Tolkien. It was published on 21 September 1937 to wide critical acclaim, being nominated for the Carnegie Medal and awarded a prize from the New York Herald Tribune for best juvenile fiction.", "978-0-395-19395-7", 14.99, "The Hobbit" },
                     { 4, "Stephen King", 5, "The Stand is a post-apocalyptic dark fantasy novel written by American author Stephen King and first published in 1978 by Doubleday. The plot centers on a pandemic of a weaponized strain of influenza that kills almost the entire world population.", "978-0-385-12167-5", 9.9900000000000002, "The Stand" },
-                    { 5, "Stephen King", 5, "It is a 1986 horror novel by American author Stephen King. It was his 22nd book and 18th novel written under his own name. The story follows the experiences of seven children as they are terrorized by an evil entity that exploits the fears of its victims to disguise itself while hunting its prey.", "978-0-670-81302-8", 9.9900000000000002, "It" }
+                    { 5, "Stephen King", 5, "It is a 1986 horror novel by American author Stephen King. It was his 22nd book and 18th novel written under his own name. The story follows the experiences of seven children as they are terrorized by an evil entity that exploits the fears of its victims to disguise itself while hunting its prey.", "978-0-670-81302-8", 9.9900000000000002, "It" },
+                    { 6, "Stephen King", 5, "The Green Mile is a 1996 serial novel by American writer Stephen King. It tells the story of death row supervisor Paul Edgecombe's encounter with John Coffey, an unusual inmate who displays inexplicable healing and empathetic abilities.", "978-0-671-79378-1", 9.9900000000000002, "The Green Mile" },
+                    { 7, "Jane Austen", 2, "A romantic novel that charts the emotional development of the protagonist, Elizabeth Bennet, who learns the error of making hasty judgments and comes to appreciate the difference between the superficial and the essential.", "978-0-19-953556-9", 7.9900000000000002, "Pride and Prejudice" },
+                    { 8, "Test Author", 2, "Test2", "978-0-671-79378-1", 15.99, "Test2" },
+                    { 9, "Herman Melville", 2, "An epic tale of the voyage of the whaling ship Pequod, commanded by Captain Ahab who is obsessed with revenge against Moby Dick, the giant white sperm whale that on a previous voyage destroyed Ahab's ship and severed his leg.", "978-0-14-243724-7", 11.99, "Moby-Dick" },
+                    { 10, "Harper Lee", 2, "A novel set in the American South during the 1930s, focusing on the Finch family and the moral growth of the children as their father, Atticus, defends a black man falsely accused of raping a white woman.", "978-0-06-112008-4", 10.99, "To Kill a Mockingbird" }
                 });
 
             migrationBuilder.CreateIndex(

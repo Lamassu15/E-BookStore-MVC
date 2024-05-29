@@ -20,6 +20,7 @@ namespace Web.Models
         public string? City { get; set; }
         public string? State { get; set; }
         public string? PostalCode { get; set; }
-        //public string Role { get; set; }
+        [NotMapped]
+        public string Role { get; set; }
     }
 }

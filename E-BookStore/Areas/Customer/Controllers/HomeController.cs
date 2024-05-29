@@ -76,8 +76,10 @@ namespace E_BookStore.Areas.Customer.Controllers
         }
         public IActionResult Search(string searchTerm)
         {
-            IEnumerable<Product> searchResults = _unitOfWork.Product.GetAll(p => p.Title.Contains(searchTerm), includeProperties: "Category");
+            IEnumerable<Product> searchResults = _unitOfWork.Product.GetAll(p => p.Title.Contains(searchTerm) || p.Author.Contains(searchTerm), includeProperties: "Category,ProductImages");
+            // Return the search results view with the searchResults
             return View(searchResults);
+
         }
     }
 }

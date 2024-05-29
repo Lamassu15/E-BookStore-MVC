@@ -39,11 +39,11 @@
                                    Image = image,
                                    Index = index
                                }))
-                               {
+                                {
                                     <div class="@(imageWithIndex.Index==0?"carousel-item active":"carousel-item")">
                                         <img src="@imageWithIndex.Image.ImageUrl" class="d-block w-100" alt="...">
                                     </div>
-                               }
+                                }
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -85,3 +85,16 @@
         </div>
     </section>
 </form>
+
+<script>
+    function animateCart() {
+        var cart = document.getElementById('cart');
+        cart.classList.add('animate__animated', 'animate__bounce');
+        setTimeout(function () {
+            cart.classList.remove('animate__animated', 'animate__bounce');
+        }, 1000);
+    }
+
+    // Call the animateCart function when the Add to Cart button is clicked
+    document.querySelector('button[type="submit"]').addEventListener('click', animateCart);
+</script>

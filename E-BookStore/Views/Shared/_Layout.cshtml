@@ -18,9 +18,9 @@
     @*Boostrap Icons*@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
-<body> 
+<body>
     <header>
-        <nav class="navbar navbar-expand-sm bg-primary navbar-toggleable-sm border-bottom" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-sm py-3 bg-primary navbar-toggleable-sm border-bottom" data-bs-theme="dark">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Lamassu Books</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -43,10 +43,21 @@
                                         <i class="fa-solid fa-gear fa-spin"></i> Manage
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a></li>
-                                        <li><a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Products</a></li>
-                                        <li><a class="dropdown-item" asp-area="Admin" asp-controller="Order" asp-action="Index">Orders</a></li>
-                                        <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create Users</a></li>
+                                        <li>
+                                            <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Products</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-area="Admin" asp-controller="Order" asp-action="Index">Orders</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider"><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create Users</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Index">Users</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -120,7 +131,7 @@
 
     <script src="https://cdn.tiny.cloud/1/g28lhnxtlihu4l4a381gw7tz47voznshwbi10lmsvlekrfme/tinymce/6/tinymce.min.js" referrerpolicy="origin">
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
